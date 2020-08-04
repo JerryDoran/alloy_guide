@@ -84,6 +84,10 @@
   text-align: center;
 }
 
+.btn {
+  margin: 0 auto !important;
+}
+
 /* Media Queries */
 @media (min-width: 400px) {
   .alloys {
