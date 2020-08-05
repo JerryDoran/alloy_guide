@@ -1,5 +1,5 @@
 // Shell resource
-const staticCacheName = 'site-static-v9';
+const staticCacheName = 'site-static-v1';
 const dynamicCacheName = 'site-dynamic-v1';
 const assets = [
   '/',
@@ -14,6 +14,17 @@ const assets = [
   'https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2',
   '/pages/fallback.html',
 ];
+
+// Cache size limit function
+const limitCacheSize = (name, size) => {
+  caches.open(name).then((cache) => {
+    cache.keys().then((keys) => {
+      if (keys.length > size) {
+        cache.delete(keys[0]).then(limitCacheSize(name, size));
+      }
+    });
+  });
+};
 
 // install service worker
 self.addEventListener('install', (event) => {
@@ -61,6 +72,7 @@ self.addEventListener('fetch', (event) => {
         );
       })
       .catch(() => {
+        // checks to see if the html string is in the url
         if (event.request.url.indexOf('.html') > -1) {
           return caches.match('/pages/fallback.html');
         }
