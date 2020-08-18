@@ -1,6 +1,6 @@
 // Shell resource
-const staticCacheName = 'site-static-v1';
-const dynamicCacheName = 'site-dynamic-v1';
+const staticCacheName = 'site-static-v4';
+const dynamicCacheName = 'site-dynamic-v4';
 const assets = [
   '/',
   '/index.html',
@@ -56,50 +56,50 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   // Intercept fetch events when browser tries to go out to the server and
   // tries to retrieve resources.
-  event.respondWith(
-    caches
-      .match(event.request)
-      .then((cacheRes) => {
-        return (
-          cacheRes ||
-          fetch(event.request).then((fetchRes) => {
-            return caches.open(dynamicCacheName).then((cache) => {
-              cache.put(event.request.url, fetchRes.clone());
-              limitCacheSize(dynamicCacheName, 15);
-              return fetchRes;
-            });
-          })
-        );
-      })
-      .catch(() => {
-        // checks to see if the html string is in the url
-        if (event.request.url.indexOf('.html') > -1) {
-          return caches.match('/pages/fallback.html');
-        }
-      })
-  );
+  // event.respondWith(
+  //   caches
+  //     .match(event.request)
+  //     .then((cacheRes) => {
+  //       return (
+  //         cacheRes ||
+  //         fetch(event.request).then((fetchRes) => {
+  //           return caches.open(dynamicCacheName).then((cache) => {
+  //             cache.put(event.request.url, fetchRes.clone());
+  //             limitCacheSize(dynamicCacheName, 15);
+  //             return fetchRes;
+  //           });
+  //         })
+  //       );
+  //     })
+  //     .catch(() => {
+  //       // checks to see if the html string is in the url
+  //       if (event.request.url.indexOf('.html') > -1) {
+  //         return caches.match('/pages/fallback.html');
+  //       }
+  //     })
+  // );
   // console.log('fetch event', event);
-  // if (event.request.url.indexOf('firestore.googleapis.com') === -1) {
-  //   event.respondWith(
-  //     caches
-  //       .match(event.request)
-  //       .then(cacheRes => {
-  //         return (
-  //           cacheRes ||
-  //           fetch(event.request).then(fetchRes => {
-  //             return caches.open(dynamicCacheName).then(cache => {
-  //               cache.put(event.request.url, fetchRes.clone());
-  //               limitCacheSize(dynamicCacheName, 15);
-  //               return fetchRes;
-  //             });
-  //           })
-  //         );
-  //       })
-  // .catch(() => {
-  //   if (event.request.url.indexOf('.html') > -1) {
-  //     return caches.match('/pages/fallback.html');
-  //   }
-  // })
-  //   );
-  // }
+  if (event.request.url.indexOf('firestore.googleapis.com') === -1) {
+    event.respondWith(
+      caches
+        .match(event.request)
+        .then((cacheRes) => {
+          return (
+            cacheRes ||
+            fetch(event.request).then((fetchRes) => {
+              return caches.open(dynamicCacheName).then((cache) => {
+                cache.put(event.request.url, fetchRes.clone());
+                limitCacheSize(dynamicCacheName, 15);
+                return fetchRes;
+              });
+            })
+          );
+        })
+        .catch(() => {
+          if (event.request.url.indexOf('.html') > -1) {
+            return caches.match('/pages/fallback.html');
+          }
+        })
+    );
+  }
 });
