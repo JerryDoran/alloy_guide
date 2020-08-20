@@ -23,3 +23,5 @@ db.collection('ALLOYS').onSnapshot((snapshot) => {
     }
   });
 });
+
+
