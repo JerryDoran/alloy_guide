@@ -103,25 +103,100 @@
 }
 
 .modal-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  position: relative;
   background-color: #f4f4f4;
   margin: 20% auto;
-  padding: 20px;
-  width: 70%;
+  /* padding: 150px 20px; */
+  width: 90%;
+  height: 60%;
+  border-radius: 10px;
   box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
   animation-name: modalOpen;
   animation-duration: 1.5s;
 }
 
 .close-btn {
+  position: absolute;
   color: #ccc;
-  float: right;
-  font-size: 30px;
+  top: -15px;
+  right: -9px;
+  font-size: 20px;
+  background: red;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  border: none;
+  
 }
 
 .close-btn:hover, .close-btn:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 40px 0;
+  font-size: 0.75rem;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+
+.content-table thead {
+  background-color: #009879;
+  color: white;
+}
+
+.content-table thead th {
+  text-align: center;
+  font-weight: bold; 
+}
+
+.content-table tbody td {
+  text-align: center;
+  /* border: 1px solid #000; */
+}
+
+.content-table th,
+.content-table td {
+  padding: 5px 5px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.card {
+  /* margin-top: 40px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 45px;
+}
+
+.card-element {
+  font-weight: bold;
+  padding: 0 7px;
+  text-align: center;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #888;
+}
+
+.card-chem {
+  padding: 0 5px
 }
 
 @keyframes modalOpen {
