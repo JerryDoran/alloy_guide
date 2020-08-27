@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Setup Materialize Components
   const sideNav = document.querySelector('.side-menu');
   M.Sidenav.init(sideNav, { edge: 'right' });
+
+  // Get chemistry data from 'ALLOYS' collection
 });
 
 const clickOutside = (e) => {
@@ -19,113 +21,127 @@ const closeModal = () => {
 
 window.addEventListener('click', clickOutside);
 
-const openModal = (data) => {
+const openModal = (data, prices) => {
   console.log(data);
+  console.log(prices);
 
   let result = `
       <div class="modal-content">
-        <button class="close-btn">X</button>
-        <div class="card">
-          <div class="card-element">C</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.C}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Si</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.SI}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Mn</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.MN}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Cr</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.CR}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Mo</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.MO}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Fe</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.FE}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Ti</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.TI}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Al</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.AL}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Co</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.CO}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">W</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.W}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">V</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.V}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Cu</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.CU}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Zr</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.ZR}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">B</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.B}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Cb</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.CB}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Ta</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.TA}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Hf</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.HF}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Re</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.RE}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Pt</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.PT}</div>
-        </div> 
-        <div class="card">
-          <div class="card-element">Ni</div>
-            <div class="divider"></div>
-            <div class="card-chem">${data.NI}</div>
-        </div> 
+      <h5 class="alloy-code">${data.ALLOYCODE} ${data.DESC}</h5>
+        <button class="close-btn">X</button>         
+            <div class="card">
+              <div class="card-element">C</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.C}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Si</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.SI}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Mn</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.MN}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Cr</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.CR}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Mo</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.MO}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Fe</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.FE}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Ti</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.TI}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Al</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.AL}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Co</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.CO}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">W</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.W}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">V</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.V}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Cu</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.CU}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Zr</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.ZR}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">B</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.B}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Cb</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.CB}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Ta</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.TA}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Hf</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.HF}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Re</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.RE}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Pt</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.PT}</div>
+            </div> 
+            <div class="card">
+              <div class="card-element">Ni</div>
+                <div class="divider"></div>
+                <div class="card-chem">${data.NI}</div>
+            </div>    
+                       
+            <div class="bar-prices"> 
+            <h6>Bar Prices</h6>
+              ${prices
+                .map((item) => {
+                  return `                
+                <p>${item.Blend} - ${item.Price}</p>               
+                `;
+                })
+                .join('')}
+            </div>       
       </div>
+      
   `;
 
   modal.innerHTML = result;
@@ -136,10 +152,51 @@ const openModal = (data) => {
   closeBtn.addEventListener('click', closeModal);
 };
 
+// Get the alloy data by id from firestore
+const getAlloyData = (id, alloyCode) => {
+  let prices = [];
+  db.collection('ALLOYS')
+    .doc(id)
+    .get()
+    .then((doc) => {
+      const data = doc.data();
+      db.collection('PRICES')
+        .where('Alloy', '==', alloyCode)
+        .get()
+        .then((snapshot) => {
+          snapshot.docs.forEach((doc) => {
+            prices.push(doc.data());
+          });
+          openModal(data, prices);
+        });
+    });
+};
+
+// const getAlloyData = (id, alloyCode) => {
+//   let data = [];
+//   let prices = [];
+//   db.collection('ALLOYS')
+//     .doc(id)
+//     .get()
+//     .then((doc) => {
+//       data.push(doc.data());
+//     });
+
+//   db.collection('PRICES')
+//     .where('Alloy', '==', alloyCode)
+//     .get()
+//     .then((snapshot) => {
+//       snapshot.docs.forEach((doc) => {
+//         prices.push(doc.data());
+//       });
+//     });
+//   openModal(data, prices);
+// };
+
 // Render alloy data
 const renderAlloy = (data, id) => {
   const html = `
-  <div class="card-panel alloy white row" onclick="getAlloyData('${id}')">
+  <div class="card-panel alloy white row" onclick="getAlloyData('${id}', '${data.ALLOYCODE}')">
     <div class="alloy-details">
       <div class="alloy-title">${data.ALLOYCODE}</div>
       <div class="divider grey-text text-lighten-2"></div>
@@ -149,67 +206,3 @@ const renderAlloy = (data, id) => {
   `;
   alloys.innerHTML += html;
 };
-
-// Get the alloy data by id from firestore
-const getAlloyData = (id) => {
-  db.collection('ALLOYS')
-    .doc(id)
-    .get()
-    .then((doc) => {
-      const data = doc.data();
-      openModal(data);
-    });
-};
-
-{
-  /* <table class="content-table">
-      <thead>
-        <tr>
-          <th>C</th>
-          <th>Si</th>
-          <th>Mn</th>
-          <th>Cr</th>
-          <th>Mo</th>
-          <th>Fe</th>
-          <th>Ti</th>
-          <th>Al</th>
-          <th>Co</th>
-          <th>W</th>
-          <th>V</th>
-          <th>Cu</th>
-          <th>Zr</th>
-          <th>B</th>
-          <th>Cb</th>
-          <th>Ta</th>
-          <th>Hf</th>
-          <th>Re</th>
-          <th>Pt</th>
-          <th>Ni</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>.095</td>
-          <td>0</td>
-          <td>0</td>
-          <td>8.40</td>
-          <td>.50</td>
-          <td>0</td>
-          <td>.75</td>
-          <td>5.50</td>
-          <td>9.50</td>
-          <td>9.50</td>
-          <td>0</td>
-          <td>0</td>
-          <td>.015</td>
-          <td>.015</td>
-          <td>0</td>
-          <td>3.0</td>
-          <td>1.60</td>
-          <td>0</td>
-          <td>0</td>
-          <td>BAL</td>
-        </tr>
-      </tbody>
-    </table> */
-}
