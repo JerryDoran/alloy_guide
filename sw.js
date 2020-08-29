@@ -1,6 +1,6 @@
 // Shell resource
-const staticCacheName = 'site-static-v5';
-const dynamicCacheName = 'site-dynamic-v5';
+const staticCacheName = 'site-static-v7';
+const dynamicCacheName = 'site-dynamic-v7';
 const assets = [
   '/',
   '/index.html',
